@@ -1,7 +1,5 @@
 import React, { ChangeEvent, ReactElement, useCallback, useState } from 'react';
-import RGL, { WidthProvider } from 'react-grid-layout';
-
-const ReactGridLayout = WidthProvider(RGL);
+import ReactGridLayout from 'react-grid-layout';
 
 interface Item {
   // A string corresponding to the component key
@@ -68,9 +66,9 @@ export const GridLayout = () => {
         <ReactGridLayout
           className="layout min-w-min"
           layout={layout}
-          cols={scale}
+          cols={duration}
           rowHeight={30}
-          width={scale}
+          width={duration}
           margin={[0, 5]}
           onLayoutChange={onLayoutChange}
         >
