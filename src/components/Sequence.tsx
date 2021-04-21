@@ -69,10 +69,6 @@ export const Sequence = memo(() => {
     requestAnimationFrame(() => loop(++frame));
   };
 
-  useEffect(() => {
-    console.log(timelines);
-  }, [timelines]);
-
   return (
     <>
       <p className="px-10 py-5">

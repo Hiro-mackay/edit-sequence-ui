@@ -20,15 +20,15 @@ export default function Home() {
         </div>
         <div></div>
       </div>
-      <div className="pt-10">
+      {/* <div className="pt-10">
         <Container />
-      </div>
+      </div> */}
       <div className="pt-10">
         <GridLayout />
       </div>
-      <div className="pt-10">
+      {/* <div className="pt-10">
         <SortableJS />
-      </div>
+      </div> */}
     </>
   );
 }
