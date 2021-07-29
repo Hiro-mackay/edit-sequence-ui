@@ -18,7 +18,6 @@ export default function Home() {
         <div className="">
           <Sequence />
         </div>
-        <div></div>
       </div>
       {/* <div className="pt-10">
         <Container />

@@ -1,12 +1,9 @@
 import '../styles/tailwind.compiled.css';
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import { DndProvider } from 'react-dnd';
+import '../components/DndGridLayout.css';
+// import '../../node_modules/react-resizable/css/styles.css'
+
 function MyApp({ Component, pageProps }) {
-  return (
-    <DndProvider backend={HTML5Backend}>
-      <Component {...pageProps} />
-    </DndProvider>
-  );
+  return <Component {...pageProps} />;
 }
 
 export default MyApp;
