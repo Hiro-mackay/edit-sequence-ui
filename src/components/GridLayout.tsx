@@ -52,11 +52,10 @@ export const GridLayout = () => {
   };
 
   const onSelected = (item: Item) => {
-    console.log('selected');
     setSelected(item);
   };
 
-  const onLayoutChange = (layout) => {
+  const onLayoutChange = (layout: Layout) => {
     setLayout(layout);
   };
 
@@ -70,7 +69,11 @@ export const GridLayout = () => {
           rowHeight={30}
           width={duration}
           margin={[0, 5]}
+          compactType="horizontal"
           onLayoutChange={onLayoutChange}
+          onDragStop={(layout, oldItem, newItem, placeholder, e, element) => {
+            console.log(layout, oldItem, newItem, placeholder, e, element);
+          }}
         >
           {layout.map((item) => {
             return <div key={item.i} className="bg-gray-600  rounded-lg" onClick={() => onSelected(item)} />;

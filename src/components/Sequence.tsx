@@ -102,6 +102,21 @@ export const Sequence = memo(() => {
           ghostClass={'bg-blue-400'}
           animation={200}
           delay={2}
+          // onEnd={(/**Event*/ evt) => {
+          //   console.log('onEnd', evt.to);
+          // }}
+          onUpdate={(/**Event*/ evt) => {
+            console.log('onUpdate', evt);
+          }}
+          // onSort={(/**Event*/ evt) => {
+          //   console.log('onSort', evt);
+          // }}
+          // onMove={(/**Event*/ evt, originalEvent) => {
+          //   console.log('onMove', evt, originalEvent);
+          // }}
+          // onChange={(/**Event*/ evt) => {
+          //   console.log('onChange', evt);
+          // }}
         >
           {timelines.map((tl) => (
             <Timeline key={tl.id} item={tl} sequenceScale={sequenceScale} />
