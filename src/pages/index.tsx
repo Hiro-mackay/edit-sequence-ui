@@ -22,7 +22,7 @@ export default function Home() {
       {/* <div className="pt-10">
         <Container />
       </div> */}
-      <div className="pt-10">
+      <div className="pt-10 overflow-scroll">
         <GridLayout />
       </div>
       {/* <div className="pt-10">
