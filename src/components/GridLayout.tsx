@@ -1,40 +1,17 @@
 import React, { ChangeEvent, ReactElement, useCallback, useState } from 'react';
-import ReactGridLayout from 'react-grid-layout';
+import ReactGridLayout, { Layout } from 'react-grid-layout';
 
-interface Item {
-  // A string corresponding to the component key
-  i: string;
-
-  // These are all in grid units, not pixels
-  x: number;
-  y: number;
-  w: number;
-  h: number;
-  minW?: number;
-  maxW?: number;
-  minH?: number;
-  maxH?: number;
-
-  // If true, equal to `isDraggable: false, isResizable: false`.
-  static?: boolean;
-  // If false, will not be draggable. Overrides `static`.
-  isDraggable?: boolean;
-  // If false, will not be resizable. Overrides `static`.
-  isResizable?: boolean;
-  // By default, a handle is only shown on the bottom-right (southeast) corner.
-  // Note that resizing from the top or left is generally not intuitive.
-  resizeHandles?: Array<'s' | 'w' | 'e' | 'n' | 'sw' | 'nw' | 'se' | 'ne'>;
-  // If true and draggable, item will be moved only within grid.
-  isBounded?: boolean;
+interface Item extends Layout {
+  name: string;
 }
 
-type Layout = Array<Item>;
+type Layouts = Array<Item>;
 
 export const GridLayout = () => {
   const [layout, setLayout] = useState<Array<Item>>([
-    { i: 'a', x: 0, y: 0, w: 1200, h: 1 },
-    { i: 'b', x: 1200, y: 0, w: 1500, h: 1 },
-    { i: 'c', x: 2700, y: 0, w: 1100, h: 1 }
+    { i: 'a', x: 0, y: 0, w: 1200, h: 1, name: 'a' },
+    { i: 'b', x: 1200, y: 0, w: 1500, h: 1, name: 'b' },
+    { i: 'c', x: 2700, y: 0, w: 1100, h: 1, name: 'c' }
   ]);
 
   const [scale, setScale] = useState(0.2);
@@ -42,11 +19,8 @@ export const GridLayout = () => {
 
   const [duration, sertDuration] = useState(3800);
 
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    sertDuration(parseInt(e.currentTarget.value));
-  };
-
-  const onLayoutChange = (newLayout: Layout) => {
+  const onLayoutChange = (newLayout: Layouts) => {
+    console.log(newLayout);
     setLayout(newLayout);
   };
 
@@ -87,9 +61,6 @@ export const GridLayout = () => {
           transformScale={scale}
           compactType="horizontal"
           onLayoutChange={onLayoutChange}
-          // onDragStop={(layout, oldItem, newItem, placeholder, e, element) => {
-          //   console.log(layout, oldItem, newItem, placeholder, e, element);
-          // }}
         >
           {layout.map((item) => {
             return <div key={item.i} className="bg-gray-600" />;
